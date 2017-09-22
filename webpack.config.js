@@ -5,7 +5,6 @@ const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const { DefinePlugin, EnvironmentPlugin } = require('webpack');
 
-
 const production = process.env.NODE_ENV === 'production';
 
 let plugins = [
@@ -15,15 +14,11 @@ let plugins = [
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
     __API_URL__: JSON.stringify(process.env.API_URL),
-
   }),
 ];
 
 if (production) {
-  plugins = plugins.concat([
-    new CleanPlugin(),
-    new UglifyPlugin(),
-  ]);
+  plugins = plugins.concat([new CleanPlugin(), new UglifyPlugin()]);
 }
 
 module.exports = {
@@ -42,6 +37,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.svg$/,
+        loader: 'babel!react-svg',
       },
       {
         test: /\.scss$/,
