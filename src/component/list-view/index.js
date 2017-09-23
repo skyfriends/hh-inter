@@ -1,23 +1,27 @@
 import React from 'react';
-import { Paper, GridList, GridTile, AppBar } from 'material-ui';
-import Logo from '../../../logo-symbol.svg';
+import { Paper, GridList, GridTile, AppBar, TextField } from 'material-ui';
+import Logo from './logo-symbol.svg';
 
 class ListView extends React.Component {
   render() {
     return (
       <div>
-        <AppBar
-          showMenuIconButton={false}
-          style={{ backgroundColor: '#373C3C' }}
-          iconElementLeft={<Logo />}
-        />
+        <div id="nav-bar">
+          <AppBar
+            style={{ backgroundColor: '#373C3C' }}
+            iconElementLeft={<Logo />}
+            iconStyleLeft={{ padding: '8px' }}
+          >
+            <input type="text" />
+          </AppBar>
+        </div>
         <div>
           <Paper
             style={{
               backgroundColor: '#D6D8D8',
               position: 'absolute',
               width: '20%',
-              top: '10%',
+              top: '8%',
               left: 0,
               height: '100vh',
             }}

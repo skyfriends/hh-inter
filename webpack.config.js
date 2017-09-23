@@ -34,13 +34,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.svg$/,
         loader: 'babel-loader',
       },
       {
-        test: /\.svg$/,
-        loader: 'babel!react-svg',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
