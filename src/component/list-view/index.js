@@ -11,9 +11,20 @@ class ListView extends React.Component {
             style={{ backgroundColor: '#373C3C' }}
             iconElementLeft={<Logo />}
             iconStyleLeft={{ padding: '8px' }}
-          >
-            <input type="text" />
-          </AppBar>
+            iconElementRight={
+              <input
+                type="text"
+                style={{
+                  borderStyle: 'none',
+                  padding: '10px',
+                  borderRadius: '8px',
+                  width: '200px',
+                }}
+                placeholder="Search"
+              />
+            }
+            iconStyleRight={{ padding: '15px' }}
+          />
         </div>
         <div>
           <Paper
