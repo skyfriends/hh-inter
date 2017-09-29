@@ -1,18 +1,30 @@
 import React from 'react';
 import superagent from 'superagent';
-import { Paper, GridList, GridTile, AppBar, FlatButton } from 'material-ui';
+import Pagination from 'react-js-pagination';
+import { Paper, GridList, GridTile, AppBar } from 'material-ui';
 import Logo from './logo-symbol.svg';
+import '../../style/main.scss';
 
 class ListView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { colorData: [] };
+    this.state = { colorData: [], activePage: 1 };
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
   componentWillMount() {
     superagent
       .get('http://localhost:3000/api/colors')
       .then(res => this.setState({ colorData: res.body }));
   }
+
+  handlePageChange(pageNumber) {
+    this.setState({ activePage: pageNumber });
+    superagent
+      .get('http://localhost:3000/api/colors')
+      .query({ page: this.state.activePage })
+      .then(res => this.setState({ colorData: res.body }));
+  }
+
   render() {
     return (
       <div>
@@ -106,11 +118,24 @@ class ListView extends React.Component {
                     color: '#373C3C',
                     fontFamily: 'Source Serif Pro',
                   }}
-                  img={color.name}
                   title={color.name}
                 />
               ))}
             </GridList>
+            <div style={{ textAlign: 'center' }}>
+              <Pagination
+                activePage={this.state.activePage}
+                itemsCountPerPage={12}
+                totalItemsCount={101}
+                pageRangeDisplayed={8}
+                onChange={this.handlePageChange}
+                hideNavigation
+                itemClass="page-number"
+                linkClass="page-link"
+                activeClass="page-number-active"
+                activeLinkClass="page-link-active"
+              />
+            </div>
           </div>
         </div>
       </div>
