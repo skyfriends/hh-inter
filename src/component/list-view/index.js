@@ -21,14 +21,14 @@ class ListView extends React.Component {
   }
   componentWillMount() {
     superagent
-      .get('http://localhost:3000/api/colors')
+      .get('https://hh-interback.herokuapp.com/api/colors')
       .then(res => this.setState({ colorData: res.body }));
   }
 
   handlePagination(pageNumber) {
     this.setState({ activePage: pageNumber });
     superagent
-      .get('http://localhost:3000/api/colors')
+      .get('https://hh-interback.herokuapp.com/api/colors')
       .query({ page: pageNumber })
       .then(res => this.setState({ colorData: res.body }));
   }
