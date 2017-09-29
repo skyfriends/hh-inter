@@ -22,6 +22,7 @@
     "dotenv": "^4.0.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
+    "hex-to-hsl": "^1.0.2",
     "html-webpack-plugin": "^2.30.1",
     "material-ui": "^0.19.2",
     "node-sass": "^4.5.3",
