@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node index.js",
     "test": "jest --coverage",
     "test watch": "test --watchAll",
     "watch": "webpack-dev-server --inline --hot",
